@@ -42,3 +42,23 @@
 |コンテナの名前変更|docker container rename 旧名 新名|docker container rename nginx webserver|
 |不要なイメージ/コンテナの一括削除|docker system prune -a|不要なリソース全削除|
 
+* Dockerfile
+
+Dockerfileがない場合のDockerイメージ作成手順
+
+1. ベースになるDockerイメージの作成(pull)
+
+1. イメージからDockerコンテナ生成<br>
+    ex) docker container run --name "nginx" -d -p 8080:80 nginx
+1. 環境変数などの設定(OSの設定や、ミドルウェアのインストール/パラメータ設定など)
+
+1. 出来上がったコンテナでサーバを構築した状態をもとにDockerイメージを生成
+
+上記手順でDockerイメージを作成する場合、次の情報を別途、インフラ設計書やパラメータシートなどで残しておく必要がある。
+
+- ベースになるDockerイメージ
+- Dockerコンテナ内で行った操作（コマンド)
+- 環境変数などの設定
+- Dockerコンテナ内で動作させておくデーモン実行
+
+Dockerfileは、このような、Docker上で動作させるコンテナ構成情報を記述するためのファイルです。
