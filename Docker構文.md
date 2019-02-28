@@ -1,4 +1,5 @@
 * Docker構文
+(ctlr+k→v : display preview on same window)
 
 | 概要 | 構文 | 例 |
 | ---- | ---- | ---- |
