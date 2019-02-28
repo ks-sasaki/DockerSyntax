@@ -1,5 +1,7 @@
-* Docker構文
+* Docker構文  
+今後使いそうな構文の備忘録  
 (ctlr+k→v : display preview on same window)
+
 
 * イメージ
 
@@ -32,3 +34,11 @@
 |コンテナの開始|docker container start コンテナ識別子|複数のコンテナを一度に起動したいときは、引数にコンテナ識別子を複数指定します。|
 |コンテナの停止|docker container stop -t 2 コンテナ識別子|-t : コンテナの停止時間を指定する（デフォルトは10秒)|
 |コンテナの削除|docker container rm [option] コンテナ識別子|--force : 起動中のコンテナを強制的に削除する|
+|ネットワークの一覧表示|docker network ls||
+|ネットワークの作成|docker network create [option] ネットワーク名|--ipv6 : IPv6ネットワークを有効にするか(true/false)<br>--ip-range : IPアドレスのレンジ<br>--subnet : サブネットをCIDR形式で指定|
+|ネットワークへの接続|docker network connect [option] ネットワーク名 コンテナ|--ip : Ipv4アドレス<br>--ip6 : IPv6アドレス<br>接続後は、同一ネットワーク上にある他のコンテナと通信可能になる|
+|コンテナの詳細確認|docker container inspect コンテナ識別子||
+|稼働コンテナのポート転送確認|docker container port コンテナ識別子|コンテナポート番号＞ホストのポート番号|
+|コンテナの名前変更|docker container rename 旧名 新名|docker container rename nginx webserver|
+|不要なイメージ/コンテナの一括削除|docker system prune -a|不要なリソース全削除|
+
