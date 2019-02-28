@@ -21,3 +21,14 @@
 | 概要 | 構文 | 例 |
 | --- | --- | --- |
 |コンテナ生成/起動|docker container run [option] イメージ名[:タグ名][引数]|docker container run -it --name "test" centos /bin/cal<br>-it : コンソールに結果を出力する<br>--name "" : コンテナ名指定<br>centos : イメージ名 <br>/bin/cal : コンテナで実行するコマンド|
+|コンテナのバックグラウンド起動|docker container -d nginx|-d : バックグラウンドで起動するオプション<br>バックグラウンドで起動されるので、コンソール上には起動したコンテナのIDのみ表示される|
+|コンテナのlog確認|docker container logs -t コンテナ識別子| -t : タイムスタンプ表示|
+|コンテナのポートマッピング|docker container run -d -p 8080:80 nginx|ホストの8080ポートをNginxの80番ポートにマッピング|
+|コンテナのDNSサーバ指定|docker container run -d --dns IPアドレス|docker container run -d -dns 192.168.1.1|
+|コンテナのディレクトリの共有|docker container run -v ホストディレクトリ:コンテナディレクトリ|docker container run -v /Users/ks-sasaki/webapp:/usr/share/nginx/html nginx|
+|コンテナの一覧表示|docker container ls [option]|-a : 停止中のコンテナ含め全表示|
+|コンテナの稼働確認|docker container stats コンテナ識別子|※状態の確認が終わったらCtrl+Cキーでコマンドを終了させます|
+|コンテナのプロセス確認|docker container top コンテナ識別子|
+|コンテナの開始|docker container start コンテナ識別子|複数のコンテナを一度に起動したいときは、引数にコンテナ識別子を複数指定します。|
+|コンテナの停止|docker container stop -t 2 コンテナ識別子|-t : コンテナの停止時間を指定する（デフォルトは10秒)|
+|コンテナの削除|docker container rm [option] コンテナ識別子|--force : 起動中のコンテナを強制的に削除する|
